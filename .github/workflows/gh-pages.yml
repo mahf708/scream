@@ -20,9 +20,9 @@ jobs:
     steps:
       - name: Check out the repository
         uses: actions/checkout@v3
-        # with:
+        with:
         #   fetch-depth: 0 # Needed, or else gh-pages won't be fetched, and push rejected
-        #   submodules: recursive
+          submodules: recursive
   
       - name: Show action trigger
         run: |
