@@ -59,4 +59,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3.9.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: /home/runner/work/scream/scream/components/eamxx/site
+          publish_dir: ./components/eamxx/site
