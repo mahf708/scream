@@ -47,9 +47,16 @@ jobs:
         run: |
           mkdocs build --strict --verbose
 
-      # only deploy when there is a push to master
+      # # only deploy when there is a push to master
+      # - if: ${{ github.event_name == 'push' }}
+      #   name: Deploy docs
+      #   working-directory: components/eamxx
+      #   run: |
+      #     mkdocs gh-deploy --verbose
+
       - if: ${{ github.event_name == 'push' }}
-        name: Deploy docs
-        working-directory: components/eamxx
-        run: |
-          mkdocs gh-deploy --verbose
+        name: GitHub Pages action
+        uses: peaceiris/actions-gh-pages@v3.9.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: /home/runner/work/scream/scream/components/eamxx/site
