@@ -212,11 +212,14 @@ void Nudging::run_impl (const double dt)
   for (auto name : m_fields_nudge) {
     auto atm_state_field = get_field_out_wrap(name);
     auto int_state_field = get_helper_field(name);
+    auto nil_state_field = get_helper_field(name);
     auto ext_state_field = get_helper_field(name+"_ext");
     auto ext_state_view  = ext_state_field.get_view<mPack**>();
     auto atm_state_view  = atm_state_field.get_view<mPack**>();  // TODO: Right now assume whatever field is defined on COLxLEV
     auto int_state_view  = int_state_field.get_view<mPack**>();
+    auto nil_state_view  = nil_state_field.get_view<mPack**>();
     auto int_mask_view = m_buffer.int_mask_view;
+    auto nil_mask_view = m_buffer.int_mask_view;
     // Masked values in the source data can lead to strange behavior in the vertical interpolation.
     // We pre-process the data and map any masked values (sometimes called "filled" values) to the
     // nearest un-masked value.
@@ -272,16 +275,16 @@ void Nudging::run_impl (const double dt)
       perform_vertical_interpolation<Real,1,2>(p_mid_ext_p,
                                                p_mid_v,
                                                ext_state_view,
-                                               int_state_view,
-                                               int_mask_view,
+                                               nil_state_view,
+                                               nil_mask_view,
                                                m_num_src_levs,
                                                m_num_levs);
     } else if (m_src_pres_type == STATIC_1D_VERTICAL_PROFILE) {
       perform_vertical_interpolation<Real,1,2>(p_mid_ext_1d,
                                                p_mid_v,
                                                ext_state_view,
-                                               int_state_view,
-                                               int_mask_view,
+                                               nil_state_view,
+                                               nil_mask_view,
                                                m_num_src_levs,
                                                m_num_levs);
     }
