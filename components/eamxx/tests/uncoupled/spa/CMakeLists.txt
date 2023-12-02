@@ -24,8 +24,8 @@ CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/spa_standalone_output.yaml
 # Ensure test input files are present in the data dir
 set (TEST_INPUT_FILES
   scream/init/${EAMxx_tests_IC_FILE_72lev}
-  scream/maps/map_ne4np4_to_ne2np4_mono.nc
-  scream/init/spa_file_unified_and_complete_ne4_20220428.nc
+  scream/maps/map_ne4pg2_to_ne2np4_20231201.nc
+  scream/init/spa_eamv3_pd_ne4pg2_L72_20231201.nc
 )
 foreach (file IN ITEMS ${TEST_INPUT_FILES})
   GetInputFile(${file})

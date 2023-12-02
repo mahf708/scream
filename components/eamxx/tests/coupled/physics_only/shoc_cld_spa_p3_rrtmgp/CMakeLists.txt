@@ -21,8 +21,8 @@ math (EXPR MAC_MIC_SUBCYCLES "(${ATM_TIME_STEP} + ${SHOC_MAX_DT} - 1) / ${SHOC_M
 set (TEST_INPUT_FILES
   scream/init/${EAMxx_tests_IC_FILE_72lev}
   scream/init/spa_init_ne2np4.nc
-  scream/maps/map_ne4np4_to_ne2np4_mono.nc
-  scream/init/spa_file_unified_and_complete_ne4_20220428.nc
+  scream/maps/map_ne4pg2_to_ne2np4_20231201.nc
+  scream/init/spa_eamv3_pd_ne4pg2_L72_20231201.nc
   cam/topo/${EAMxx_tests_TOPO_FILE}
 )
 foreach (file IN ITEMS ${TEST_INPUT_FILES})

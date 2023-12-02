@@ -24,6 +24,7 @@ P3Microphysics::P3Microphysics (const ekat::Comm& comm, const ekat::ParameterLis
 void P3Microphysics::set_grids(const std::shared_ptr<const GridsManager> grids_manager)
 {
   using namespace ekat::units;
+  using namespace ekat::prefixes;
 
   // The units of mixing ratio Q are technically non-dimensional.
   // Nevertheless, for output reasons, we like to see 'kg/kg'.
@@ -32,6 +33,9 @@ void P3Microphysics::set_grids(const std::shared_ptr<const GridsManager> grids_m
   auto nondim = Units::nondimensional();
   auto micron = m / 1000000;
   auto m2 = m * m;
+
+  // Define cc (cubic centimeter) units
+  auto cc = ( centi * m ) * ( centi * m ) * ( centi * m );
 
   m_grid = grids_manager->get_grid("Physics");
   const auto& grid_name = m_grid->name();
@@ -85,7 +89,7 @@ void P3Microphysics::set_grids(const std::shared_ptr<const GridsManager> grids_m
   // Diagnostic Inputs: (only the X_prev fields are both input and output, all others are just inputs)
   add_field<Required>("nc_nuceat_tend",     scalar3d_layout_mid, 1/(kg*s), grid_name, ps);
   if (infrastructure.prescribedCCN) {
-    add_field<Required>("nccn",               scalar3d_layout_mid, 1/kg,     grid_name, ps);
+    add_field<Required>("nccn",               scalar3d_layout_mid, 1/cc,     grid_name, ps);
   }
   add_field<Required>("ni_activated",       scalar3d_layout_mid, 1/kg,     grid_name, ps);
   add_field<Required>("inv_qc_relvar",      scalar3d_layout_mid, Q*Q,      grid_name, ps);

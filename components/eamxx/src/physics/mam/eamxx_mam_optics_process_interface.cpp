@@ -26,6 +26,10 @@ std::string MAMOptics::name() const {
 
 void MAMOptics::set_grids(const std::shared_ptr<const GridsManager> grids_manager) {
   using namespace ekat::units;
+  using namespace ekat::prefixes;
+
+  // Define cc (cubic centimeter) units
+  auto cc = ( centi * m ) * ( centi * m ) * ( centi * m );
 
   grid_ = grids_manager->get_grid("Physics");
   const auto& grid_name = grid_->name();
@@ -59,7 +63,7 @@ void MAMOptics::set_grids(const std::shared_ptr<const GridsManager> grids_manage
   using Pack       = ekat::Pack<Real,Spack::n>;
   constexpr int ps = Pack::n;
   FieldLayout scalar3d_layout_mid { {COL, LEV}, {ncol_, nlev_} };
-  add_field<Computed>("nccn", scalar3d_layout_mid, 1/kg, grid_name, ps);
+  add_field<Computed>("nccn", scalar3d_layout_mid, 1/cc, grid_name, ps);
 }
 
 void MAMOptics::initialize_impl(const RunType run_type) {

@@ -68,8 +68,8 @@ configure_file(${SCREAM_SRC_DIR}/dynamics/homme/tests/theta-dp.nl
 # Ensure test input files are present in the data dir
 set (TEST_INPUT_FILES
   scream/init/spa_init_ne2np4.nc
-  scream/maps/map_ne4np4_to_ne2np4_mono.nc
-  scream/init/spa_file_unified_and_complete_ne4_20220428.nc
+  scream/maps/map_ne4pg2_to_ne2np4_20231201.nc
+  scream/init/spa_eamv3_pd_ne4pg2_L72_20231201.nc
   scream/init/${EAMxx_tests_IC_FILE_128lev}
   cam/topo/${EAMxx_tests_TOPO_FILE}
 )
