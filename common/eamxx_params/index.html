@@ -12,11 +12,11 @@
         <link rel="prev" href="../../user/model_input/">
       
       
-        <link rel="next" href="../../developer/">
+        <link rel="next" href="../../user/coarse_nudging/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
     
     
       
@@ -416,6 +416,27 @@
 
       </a>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/coarse_nudging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Coarse nudging
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -899,6 +920,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/clean_clear_sky/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Extra radiation calls
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1328,6 +1370,16 @@
 <li>type: string  </li>
 </ul>
 </li>
+<li>nudging::nudging_refine_remap_mapfile:  <ul>
+<li>description: Refine-remapping mapfile from the source nudging dataset to the physics grid  </li>
+<li>type: string  </li>
+</ul>
+</li>
+<li>nudging::nudging_refine_remap_vert_cutoff:  <ul>
+<li>description: A vertical cutoff to go with refine-remap logic (in units of p_mid) where the nudging is turned off above it (closer to the surface)  </li>
+<li>type: real  </li>
+</ul>
+</li>
 <li>nudging::number_of_subcycles:  <ul>
 <li>description: how many times to subcycle this atm process  </li>
 <li>type: <strong>MISSING</strong>  </li>
@@ -1423,6 +1475,11 @@
 </ul>
 <h2 id="testonly">testOnly</h2>
 <ul>
+<li>testOnly::my_param:  <ul>
+<li>description: <strong>MISSING</strong>  </li>
+<li>type: array(integer)  </li>
+</ul>
+</li>
 <li>testOnly::number_of_subcycles:  <ul>
 <li>description: how many times to subcycle this atm process  </li>
 <li>type: <strong>MISSING</strong>  </li>
@@ -1594,13 +1651,23 @@
 </ul>
 </li>
 <li>rrtmgp::do_aerosol_rad:  <ul>
-<li>description: <strong>MISSING</strong>  </li>
-<li>type: <strong>MISSING</strong>  </li>
+<li>description: Flag to turn on/off considering aerosols in radiation calculations  </li>
+<li>type: logical  </li>
 </ul>
 </li>
 <li>rrtmgp::enable_column_conservation_checks:  <ul>
 <li>description: <strong>MISSING</strong>  </li>
-<li>type: <strong>MISSING</strong>  </li>
+<li>type: logical  </li>
+</ul>
+</li>
+<li>rrtmgp::extra_clnclrsky_diag:  <ul>
+<li>description: Flag to turn on/off an extra clean-clear-sky (with neither clouds nor aerosols) radiation call  </li>
+<li>type: logical  </li>
+</ul>
+</li>
+<li>rrtmgp::extra_clnsky_diag:  <ul>
+<li>description: Flag to turn on/off an extra clean-sky (with no aerosols) radiation call  </li>
+<li>type: logical  </li>
 </ul>
 </li>
 <li>rrtmgp::number_of_subcycles:  <ul>
