@@ -61,11 +61,10 @@ jobs:
           LABELS: bug
           BODY: |
 
-            GitHub Actions workflow [{{workflow}} #{{runNumber}}](https://github.com/{{repo.owner}}/{{repo.repo}}/actions/runs/{{runId}}) failed.
+            GitHub Actions workflow [${{workflow}} #${{runNumber}}](https://github.com/${{repo.owner}}/${{repo.repo}}/actions/runs/${{runId}}) failed.
 
-            Event: {{eventName}}
-            Branch: [{{refname}}](https://github.com/{{repo.owner}}/{{repo.repo}}/tree/{{refname}})
-            Commit: [{{sha}}](https://github.com/{{repo.owner}}/{{repo.repo}}/commit/{{sha}})
+            Branch: [${{refname}}](https://github.com/${{repo.owner}}/${{repo.repo}}/tree/${{refname}})
+            Commit: [${{sha}}](https://github.com/${{repo.owner}}/${{repo.repo}}/commit/${{sha}})
     
           PINNED: false
           CLOSE_PREVIOUS: false
