@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.5">
     
     
       
@@ -1159,6 +1159,66 @@
 <li>type: array(file)  </li>
 </ul>
 </li>
+<li>p3::p3_autoconversion_prefactor:  <ul>
+<li>description: P3 autoconversion_prefactor (scale factor in autoconversion)  </li>
+<li>type: real  </li>
+</ul>
+</li>
+<li>p3::p3_mu_r_constant:  <ul>
+<li>description: P3 mu_r_constant (rain “shape parameter” in gamma drop-size distribution)  </li>
+<li>type: real  </li>
+</ul>
+</li>
+<li>p3::p3_spa_to_nc:  <ul>
+<li>description: P3 spa_to_nc (scaling factor for turning CCN into nc in SPA)  </li>
+<li>type: real  </li>
+</ul>
+</li>
+<li>p3::p3_k_accretion:  <ul>
+<li>description: P3 k_accretion (scaling factor on accretion)  </li>
+<li>type: real  </li>
+</ul>
+</li>
+<li>p3::p3_eci:  <ul>
+<li>description: P3 eci (liquid/ice collision/collection coefficient)  </li>
+<li>type: real  </li>
+</ul>
+</li>
+<li>p3::p3_eri:  <ul>
+<li>description: P3 eri (ice/rain collision/collection coefficient)  </li>
+<li>type: real  </li>
+</ul>
+</li>
+<li>p3::p3_rho_rime_min:  <ul>
+<li>description: P3 rho_rime_min (riming density maximum)  </li>
+<li>type: real  </li>
+</ul>
+</li>
+<li>p3::p3_rho_rime_max:  <ul>
+<li>description: P3 rho_rime_max (riming density minimum)  </li>
+<li>type: real  </li>
+</ul>
+</li>
+<li>p3::p3_a_imm:  <ul>
+<li>description: P3 a_imm (drop freezing exponent )  </li>
+<li>type: real  </li>
+</ul>
+</li>
+<li>p3::p3_dep_nucleation_exponent:  <ul>
+<li>description: P3 dep_nucleation_exponent (deposition nucleation)  </li>
+<li>type: real  </li>
+</ul>
+</li>
+<li>p3::p3_ice_sed_knob:  <ul>
+<li>description: P3 ice_sed_knob (ice fall speed)  </li>
+<li>type: real  </li>
+</ul>
+</li>
+<li>p3::p3_d_breakup_cutoff:  <ul>
+<li>description: P3 d_breakup_cutoff (rain self collection and breakup)  </li>
+<li>type: real  </li>
+</ul>
+</li>
 <li>p3::number_of_subcycles:  <ul>
 <li>description: how many times to subcycle this atm process  </li>
 <li>type: <strong>MISSING</strong>  </li>
@@ -1516,12 +1576,12 @@
 <h2 id="spa">spa</h2>
 <ul>
 <li>spa::spa_remap_file:  <ul>
-<li>description: <strong>MISSING</strong>  </li>
+<li>description: File containing mapping data from the grid of spa_data_file to the model grid. Unused if the grid is the same.  </li>
 <li>type: file  </li>
 </ul>
 </li>
 <li>spa::spa_data_file:  <ul>
-<li>description: <strong>MISSING</strong>  </li>
+<li>description: File containing aerosol data. Must be on same grid as the atm, or a coarser one  </li>
 <li>type: file  </li>
 </ul>
 </li>
@@ -1623,16 +1683,6 @@
 <li>rrtmgp::covmr:  <ul>
 <li>description: <strong>MISSING</strong>  </li>
 <li>type: <strong>MISSING</strong>  </li>
-</ul>
-</li>
-<li>rrtmgp::time_varying_active_gases_list:  <ul>
-<li>description: List of time-varying active gases that will be read from file(s) below  </li>
-<li>type: array(string)  </li>
-</ul>
-</li>
-<li>rrtmgp::time_varying_active_gases_file:  <ul>
-<li>description: Input data files to be read for time-varying active gases above  </li>
-<li>type: array(string)  </li>
 </ul>
 </li>
 <li>rrtmgp::orbital_year:  <ul>
@@ -2333,10 +2383,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indices", "navigation.instant", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indices", "navigation.instant", "navigation.sections", "navigation.top"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c18c5fb9.min.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
