@@ -30,7 +30,7 @@ jobs:
   notify-scream-defaults:
     name: Notify failed build
     needs: scream-defaults
-    if: failure() && github.event.pull_request == null
+    if: failure()
     runs-on: ubuntu-latest
     steps:
       - name: Create issue
