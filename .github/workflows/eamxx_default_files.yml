@@ -57,7 +57,8 @@ jobs:
           ASSIGNEES: mahf708,bartgol
           LABELS: bug,input file,notify-file-gh-action
           BODY: |
-            Workflow failed! There's likely a missing file specified in the configs!
+            Workflow failed at $(date "+%Y%m%d")! There's likely a missing file specified in the configs!
             For more information, please see:
               - Workflow URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+              - Workflow No.: ${{ github.run_number }} (attempt ${{ github.run_attempt }})
               - Workflow SHA: ${{ github.sha }}
