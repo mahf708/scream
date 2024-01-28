@@ -30,7 +30,7 @@ void Cldtop_Entrainment::set_grids(
   // The fields required for this diagnostic to be computed
   add_field<Required>("qc", scalar3d, kg / kg, grid_name);
   add_field<Required>("T_mid", scalar3d, K, grid_name);
-  add_field<Required>("z_mid", vector2d, m, grid_name);
+  add_field<Required>("z_mid", scalar3d, m, grid_name);
 
   // Construct and allocate the cldtop_entrainment field
   // We are going to assume we have nondim units here for ease
@@ -48,9 +48,9 @@ void Cldtop_Entrainment::compute_diagnostic_impl() {
   const auto &t_mid = get_field_in("T_mid").get_view<const Real ***>();
   const auto &z_mid = get_field_in("z_mid").get_view<const Real ***>();
 
-  // Note that cte has dimensions of (ncol,m_num_outputs)
-  // m_num_outputs is defined in cltop_entrainment.hpp
-  const auto &cte = m_diagnostic_output.get_view<Real **>();
+  // Note that cte has dimensions of (ncols,m_num_outputs)
+  // m_num_outputs is defined in cldtop_entrainment.hpp
+  auto &cte = m_diagnostic_output.get_view<Real **>();
 
   const auto num_levs = m_num_levs;
   const auto policy   = ESU::get_default_team_policy(m_num_cols, m_num_levs);

@@ -25,7 +25,7 @@ class Cldtop_Entrainment : public AtmosphereDiagnostic {
 #ifdef KOKKOS_ENABLE_CUDA
  public:
 #endif
-  void compute_diagnostic_impl() override;
+  void compute_diagnostic_impl();
 
   int m_ncols;
   int m_nlevs;
