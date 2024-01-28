@@ -46,7 +46,7 @@ inline void register_diagnostics () {
   diag_factory.register_product("VaporFlux",&create_atmosphere_diagnostic<VaporFluxDiagnostic>);
   diag_factory.register_product("precip_surf_mass_flux",&create_atmosphere_diagnostic<PrecipSurfMassFlux>);
   diag_factory.register_product("surface_upward_latent_heat_flux",&create_atmosphere_diagnostic<SurfaceUpwardLatentHeatFlux>);
-  diag_factory.register_product("cldtop_entrainment",&create_atmosphere_diagnostic<CldtopEntrainmentDiagnostic>);
+  diag_factory.register_product("cldtop_entrainment",&create_atmosphere_diagnostic<CldtopEntrainment>);
 }
 
 } // namespace scream

@@ -4,13 +4,13 @@
 
 namespace scream {
 
-Cldtop_Entrainment::Cldtop_Entrainment(const ekat::Comm &comm,
+CldtopEntrainment::CldtopEntrainment(const ekat::Comm &comm,
                                        const ekat::ParameterList &params)
     : AtmosphereDiagnostic(comm, params) {
   // Nothing to do here
 }
 
-void Cldtop_Entrainment::set_grids(
+void CldtopEntrainment::set_grids(
     const std::shared_ptr<const GridsManager> grids_manager) {
   using namespace ekat::units;
   using namespace ShortFieldTagsNames;
@@ -25,7 +25,7 @@ void Cldtop_Entrainment::set_grids(
 
   // Define layouts we need (both inputs and outputs)
   auto scalar3d = grid->get_3d_scalar_layout(true);
-  auto vector2d = grid->get_2d_vector_layout(true, CMP, m_num_outputs);
+  auto vector2d = grid->get_2d_vector_layout(CMP, m_num_outputs);
 
   // The fields required for this diagnostic to be computed
   add_field<Required>("qc", scalar3d, kg / kg, grid_name);
@@ -39,7 +39,7 @@ void Cldtop_Entrainment::set_grids(
   m_diagnostic_output.allocate_view();
 }
 
-void Cldtop_Entrainment::compute_diagnostic_impl() {
+void CldtopEntrainment::compute_diagnostic_impl() {
   using KT  = KokkosTypes<DefaultDevice>;
   using MT  = typename KT::MemberType;
   using ESU = ekat::ExeSpaceUtils<typename KT::ExeSpace>;
@@ -50,21 +50,21 @@ void Cldtop_Entrainment::compute_diagnostic_impl() {
 
   // Note that cte has dimensions of (ncols,m_num_outputs)
   // m_num_outputs is defined in cldtop_entrainment.hpp
-  auto &cte = m_diagnostic_output.get_view<Real **>();
+  const auto &cte = m_diagnostic_output.get_view<Real **>();
 
-  const auto num_levs = m_num_levs;
-  const auto policy   = ESU::get_default_team_policy(m_num_cols, m_num_levs);
+  const auto policy   = ESU::get_default_team_policy(m_ncols, m_nlevs);
   Kokkos::parallel_for(
       "Compute " + name(), policy, KOKKOS_LAMBDA(const MT &team) {
         const int icol  = team.league_rank();
-        auto qc_icol    = ekat::subview(q, icol);
+        auto qc_icol    = ekat::subview(qc, icol);
         auto t_mid_icol = ekat::subview(t_mid, icol);
+        auto z_mid_icol = ekat::subview(z_mid, icol);
         // calculate the first height where qc(lev) > qc(lev-1)
-        for(int ilay = num_levs; ilay >= 0; --ilay) {
+        for(int ilay = m_nlevs; ilay >= 0; --ilay) {
           // TODO: Or is it the other way around?
           // TODO: Also add other methods here
           if(qc_icol(icol, ilay) > qc_icol(icol, ilay - 1)) {
-            cte(icol, 0) = z_mid(icol, ilay);
+            cte(icol, 0) = z_mid_icol(icol, ilay);
             break;
           }
         }

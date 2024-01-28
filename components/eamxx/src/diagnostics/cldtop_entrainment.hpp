@@ -9,10 +9,10 @@ namespace scream {
  * This diagnostic will compute cloud-top entrainment diagnostics.
  */
 
-class Cldtop_Entrainment : public AtmosphereDiagnostic {
+class CldtopEntrainment : public AtmosphereDiagnostic {
  public:
   // Constructors
-  Cldtop_Entrainment(const ekat::Comm &comm, const ekat::ParameterList &params);
+  CldtopEntrainment(const ekat::Comm &comm, const ekat::ParameterList &params);
 
   // The name of the diagnostic
   std::string name() const override { return "cldtop_entrainment"; }
