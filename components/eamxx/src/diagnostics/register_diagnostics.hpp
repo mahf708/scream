@@ -19,7 +19,7 @@
 #include "diagnostics/field_at_pressure_level.hpp"
 #include "diagnostics/precip_surf_mass_flux.hpp"
 #include "diagnostics/surf_upward_latent_heat_flux.hpp"
-#include "diagnostics/pbl_inversion_height.hpp"
+#include "diagnostics/cldtop_entrainment.hpp"
 
 namespace scream {
 
@@ -46,7 +46,7 @@ inline void register_diagnostics () {
   diag_factory.register_product("VaporFlux",&create_atmosphere_diagnostic<VaporFluxDiagnostic>);
   diag_factory.register_product("precip_surf_mass_flux",&create_atmosphere_diagnostic<PrecipSurfMassFlux>);
   diag_factory.register_product("surface_upward_latent_heat_flux",&create_atmosphere_diagnostic<SurfaceUpwardLatentHeatFlux>);
-  diag_factory.register_product("pbl_inversion_height",&create_atmosphere_diagnostic<PBLInversionHeightDiagnostic>);
+  diag_factory.register_product("cldtop_entrainment",&create_atmosphere_diagnostic<CldtopEntrainmentDiagnostic>);
 }
 
 } // namespace scream

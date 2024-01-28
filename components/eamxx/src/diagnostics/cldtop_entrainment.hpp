@@ -6,7 +6,7 @@
 namespace scream {
 
 /*
- * This diagnostic will compute the PBL inversion height.
+ * This diagnostic will compute cloud-top entrainment diagnostics.
  */
 
 class Cldtop_Entrainment : public AtmosphereDiagnostic {
