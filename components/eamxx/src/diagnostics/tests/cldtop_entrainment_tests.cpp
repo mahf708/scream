@@ -43,11 +43,19 @@ TEST_CASE("cldtop_entrainment") {
   auto grid = gm->get_grid("Physics");
 
   // Inputs
-  auto vector3d = grid->get_3d_vector_layout(true, CMP, 2);
-  FieldIdentifier uv_fid("horiz_winds", vector3d, m / s, grid->name());
-  Field uv(uv_fid);
-  uv.allocate_view();
-  uv.get_header().get_tracking().update_time_stamp(t0);
+  auto scalar3d = grid->get_3d_scalar_layout(true);
+  FieldIdentifier qc_fid("qc", scalar3d, kg / kg, grid->name());
+  FieldIdentifier t_mid_fid("T_mid", scalar3d, K, grid->name());
+  FieldIdentifier z_mid_fid("z_mid", scalar3d, m, grid->name());
+  Field qc(qc_fid);
+  Field t_mid(t_mid_fid);
+  Field z_mid(z_mid_fid);
+  qc.allocate_view();
+  t_mid.allocate_view();
+  z_mid.allocate_view();
+  qc.get_header().get_tracking().update_time_stamp(t0);
+  t_mid.get_header().get_tracking().update_time_stamp(t0);
+  z_mid.get_header().get_tracking().update_time_stamp(t0);
 
   // Construct the Diagnostics
   std::map<std::string, std::shared_ptr<AtmosphereDiagnostic>> diags;
@@ -55,7 +63,6 @@ TEST_CASE("cldtop_entrainment") {
   register_diagnostics();
 
   // Continue later
-
 }
 
 }  // namespace scream

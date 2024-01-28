@@ -5,7 +5,7 @@
 namespace scream {
 
 CldtopEntrainment::CldtopEntrainment(const ekat::Comm &comm,
-                                       const ekat::ParameterList &params)
+                                     const ekat::ParameterList &params)
     : AtmosphereDiagnostic(comm, params) {
   // Nothing to do here
 }
@@ -52,7 +52,7 @@ void CldtopEntrainment::compute_diagnostic_impl() {
   // m_num_outputs is defined in cldtop_entrainment.hpp
   const auto &cte = m_diagnostic_output.get_view<Real **>();
 
-  const auto policy   = ESU::get_default_team_policy(m_ncols, m_nlevs);
+  const auto policy = ESU::get_default_team_policy(m_ncols, m_nlevs);
   Kokkos::parallel_for(
       "Compute " + name(), policy, KOKKOS_LAMBDA(const MT &team) {
         const int icol  = team.league_rank();
