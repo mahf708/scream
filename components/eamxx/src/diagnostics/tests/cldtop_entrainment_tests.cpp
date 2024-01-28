@@ -25,7 +25,7 @@ std::shared_ptr<GridsManager> create_gm(const ekat::Comm &comm, const int ncols,
   return gm;
 }
 
-TEST_CASE("pbl_inversion_height") {
+TEST_CASE("cldtop_entrainment") {
   using namespace ShortFieldTagsNames;
   using namespace ekat::units;
 

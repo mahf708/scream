@@ -1,5 +1,5 @@
-#ifndef EAMXX_PBL_INVERSION_HEIGHT_HPP
-#define EAMXX_PBL_INVERSION_HEIGHT_HPP
+#ifndef EAMXX_CLDTOP_ENTRAINMENT_HPP
+#define EAMXX_CLDTOP_ENTRAINMENT_HPP
 
 #include "share/atm_process/atmosphere_diagnostic.hpp"
 
@@ -9,13 +9,13 @@ namespace scream {
  * This diagnostic will compute the PBL inversion height.
  */
 
-class PBLINversionHeight : public AtmosphereDiagnostic {
+class Cldtop_Entrainment : public AtmosphereDiagnostic {
  public:
   // Constructors
-  PBLINversionHeight(const ekat::Comm &comm, const ekat::ParameterList &params);
+  Cldtop_Entrainment(const ekat::Comm &comm, const ekat::ParameterList &params);
 
   // The name of the diagnostic
-  std::string name() const override { return "pbl_inversion_height"; }
+  std::string name() const override { return "cldtop_entrainment"; }
 
   // Set the grid
   void set_grids(
@@ -29,8 +29,11 @@ class PBLINversionHeight : public AtmosphereDiagnostic {
 
   int m_ncols;
   int m_nlevs;
+
+  // How many outputs do we want?
+  int m_num_outputs = 1;
 };
 
 }  // namespace scream
 
-#endif  // EAMXX_PBL_INVERSION_HEIGHT_HPP
+#endif  // EAMXX_CLDTOP_ENTRAINMENT_HPP

@@ -60,6 +60,6 @@ if (NOT SCREAM_BASELINES_ONLY)
   CreateDiagTest(surface_upward_latent_heat_flux "surf_upward_latent_heat_flux_tests.cpp")
 
   # Test pbl inversion height
-  CreateDiagTest(pbl_inversion_height "pbl_inversion_height_tests.cpp")
+  CreateDiagTest(cldtop_entrainment "cldtop_entrainment_tests.cpp")
 
 endif()

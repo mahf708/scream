@@ -16,7 +16,7 @@ set(DIAGNOSTIC_SRCS
   vertical_layer.cpp
   virtual_temperature.cpp
   water_path.cpp
-  pbl_inversion_height.cpp
+  cldtop_entrainment.cpp
 )
 
 add_library(diagnostics ${DIAGNOSTIC_SRCS})
