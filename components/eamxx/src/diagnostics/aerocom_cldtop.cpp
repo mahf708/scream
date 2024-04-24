@@ -36,6 +36,14 @@ void AeroComCldTop::set_grids(
   FieldIdentifier fid("AeroComCldTop", vector1d_layout, nondim, grid_name);
   m_diagnostic_output = Field(fid);
   m_diagnostic_output.allocate_view();
+
+  // Self-document the outputs to parse in post-processing
+  using stratt_t = std::map<std::string, std::string>;
+  auto d         = get_diagnostic();
+  auto &metadata =
+      d.get_header().get_extra_data<stratt_t>("io: string attributes");
+  metadata["blah"]  = "my att 1";
+  metadata["blah2"] = "my att 2";
 }
 
 void AeroComCldTop::compute_diagnostic_impl() {
