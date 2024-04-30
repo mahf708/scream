@@ -1,5 +1,5 @@
-#ifndef EAMXX_AEROCOMCLDTOP_DIAG
-#define EAMXX_AEROCOMCLDTOP_DIAG
+#ifndef EAMXX_AEROCOMCLD_DIAG
+#define EAMXX_AEROCOMCLD_DIAG
 
 #include "share/atm_process/atmosphere_diagnostic.hpp"
 
@@ -9,13 +9,13 @@ namespace scream {
  * This diagnostic will compute the AeroCom diagnostics.
  */
 
-class AeroComCldTop : public AtmosphereDiagnostic {
+class AeroComCld : public AtmosphereDiagnostic {
  public:
   // Constructors
-  AeroComCldTop(const ekat::Comm &comm, const ekat::ParameterList &params);
+  AeroComCld(const ekat::Comm &comm, const ekat::ParameterList &params);
 
   // The name of the diagnostic
-  std::string name() const override { return "AeroComCldTop"; }
+  std::string name() const;
 
   // Set the grid
   void set_grids(
@@ -30,8 +30,14 @@ class AeroComCldTop : public AtmosphereDiagnostic {
   int m_ncols;
   int m_nlevs;
   int m_ndiag;
+
+  // bool for bot/top
+  std::string m_topbot;
+
+  // vector of levels
+  std::vector<int> m_level_vector;
 };
 
 }  // namespace scream
 
-#endif  // EAMXX_AEROCOMCLDTOP_DIAG
+#endif  // EAMXX_AEROCOMCLD_DIAG

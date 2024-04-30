@@ -69,6 +69,6 @@ if (NOT SCREAM_ONLY_GENERATE_BASELINES)
   CreateDiagTest(number_paths "number_paths_tests.cpp")
 
   # Test AEROCOM_CLOUDTOP
-  CreateDiagTest(aerocom_cldtop "aerocom_cldtop_test.cpp")
+  CreateDiagTest(aerocom_cldtop "aerocom_cld_test.cpp")
 
 endif()
