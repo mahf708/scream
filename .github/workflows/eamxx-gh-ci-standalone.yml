@@ -1,0 +1,49 @@
+name: gh
+
+on:
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+
+  ci:
+    if: ${{ github.event.repository.name == 'e3sm' }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        test: 
+          - dbg
+          - fpe
+    container: 
+      image: ghcr.io/mahf708/e3sm-imgs:v0.0.6
+
+    steps:
+      - 
+        name: Checkout
+        uses: actions/checkout@v4
+        with:
+          show-progress: false
+          submodules: recursive
+      - 
+        name: Standalone
+        working-directory: components/eamxx/scripts
+        run: |
+          mkdir -p $HOME/projects/e3sm/cesm-inputdata/atm/cam/physprops/
+          wget https://web.lcrc.anl.gov/public/e3sm/inputdata/atm/cam/physprops/p3_lookup_table_1.dat-v4.1.2
+          mv p3_lookup_table_1.dat-v4.1.2 $HOME/projects/e3sm/cesm-inputdata/atm/cam/physprops/
+          export USER=test
+          ./test-all-scream -t ${{ matrix.test }} -m linux-generic
+      # - 
+      #   name: Artifacts
+      #   uses: actions/upload-artifact@v4
+      #   if: ${{ always() }}
+      #   with:
+      #     name: ${{ matrix.test }}
+      #     path: |
+      #       ~/projects/e3sm/scratch/${{ matrix.test }}*/TestStatus.log
+      #       ~/projects/e3sm/scratch/${{ matrix.test }}*/bld/*.bldlog.*
+      #       ~/projects/e3sm/scratch/${{ matrix.test }}*/run/*.log.*
+      #       ~/projects/e3sm/scratch/${{ matrix.test }}*/run/*.cprnc.out
