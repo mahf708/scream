@@ -30,6 +30,8 @@ jobs:
         name: Standalone
         working-directory: components/eamxx/scripts
         run: |
+          sudo apt install pip
+          python -m pip install psutil
           mkdir -p $HOME/projects/e3sm/cesm-inputdata/atm/cam/physprops/
           wget https://web.lcrc.anl.gov/public/e3sm/inputdata/atm/cam/physprops/p3_lookup_table_1.dat-v4.1.2
           mv p3_lookup_table_1.dat-v4.1.2 $HOME/projects/e3sm/cesm-inputdata/atm/cam/physprops/
