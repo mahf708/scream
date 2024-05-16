@@ -29,6 +29,7 @@ jobs:
       - 
         name: Standalone
         working-directory: components/eamxx/scripts
+        shell: bash
         run: |
           apt-get update
           apt-get install pip --yes
