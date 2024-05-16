@@ -85,6 +85,10 @@ MACHINE_METADATA = {
     "linux-generic" :        ([],["mpicxx","mpifort","mpicc"],"", ""),
     "linux-generic-debug" :  ([],["mpicxx","mpifort","mpicc"],"", ""),
     "linux-generic-serial" : ([],["mpicxx","mpifort","mpicc"],"", ""),
+    "singularity" : ([f"eval $({CIMEROOT}/CIME/Tools/get_case_env -c SMS.ne4pg2_ne4pg2.F2010.singularity_gnu)"],
+                ["CC","ftn","cc"],
+                "",
+                ""),
 }
 
 if pathlib.Path("~/.cime/scream_mach_specs.py").expanduser().is_file(): # pylint: disable=no-member

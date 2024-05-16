@@ -34,7 +34,7 @@ jobs:
           wget https://web.lcrc.anl.gov/public/e3sm/inputdata/atm/cam/physprops/p3_lookup_table_1.dat-v4.1.2
           mv p3_lookup_table_1.dat-v4.1.2 $HOME/projects/e3sm/cesm-inputdata/atm/cam/physprops/
           export USER=test
-          ./test-all-scream -t ${{ matrix.test }} -m linux-generic
+          ./test-all-scream -t ${{ matrix.test }} -m singularity
       # - 
       #   name: Artifacts
       #   uses: actions/upload-artifact@v4
